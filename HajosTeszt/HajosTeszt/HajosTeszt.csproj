@@ -5,4 +5,9 @@
     <UserSecretsId>5b823c57-0e74-4cc3-a3f1-0cac7964a043</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\balazskep01.JPG" />
+    <None Include="wwwroot\cv.html" />
+  </ItemGroup>
+
 </Project>
