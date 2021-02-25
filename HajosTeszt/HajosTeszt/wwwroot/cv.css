@@ -1,0 +1,59 @@
+﻿body {
+}
+
+div {
+    margin: 50px;
+    padding: 40px;
+    border: 3px solid red;
+    border-radius: 30px;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+h2{
+    color: darkorange;
+}
+#nevem{ color: green;
+
+}
+
+.dolt {
+    padding: 15px;
+    border-radius: 30px;
+    background-color: blue;
+    width: 150px;
+    color: white;
+}
+
+    .dolt:hover {
+                background-color: red;
+    }
+
+span {
+    font-weight: bold;
+    font-style: italic;
+    color: green;
+    font-size: 38px;
+}
+
+#listak {
+    font-style: italic;
+   
+}
+
+.masszin {
+    background-color: lightblue;
+    width: 150px;
+    border-radius: 25px;
+}
+
+.dolt {
+    font-style: italic;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
