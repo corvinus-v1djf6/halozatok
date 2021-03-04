@@ -1,0 +1,121 @@
+﻿{
+    box-sizing: border-box;
+}
+
+body {
+    font-weight: bold;
+    text-align: center;
+}
+
+div {
+    margin: 50px;
+    padding: 40px;
+    border: 3px solid red;
+    border-radius: 30px;
+}
+
+#article,
+#aside,
+#footer,
+#header,
+#nav {
+    padding: 20px;
+}
+
+#header {
+    background-color: darkorange;
+    color: green;
+}
+
+#nav {
+    background: deepskyblue;
+    border: 4px solid black;
+}
+
+#article {
+    text-align: left;
+    background: gold;
+    color: darkred;
+}
+
+span {
+    font-weight: bold;
+    font-style: italic;
+    color: green;
+    font-size: 38px;
+}
+
+#aside {
+    background-color: lightgreen;
+    color: darkred;
+}
+
+#footer {
+    background: red;
+}
+
+/* menü */
+#nav {
+    display: flex;
+}
+
+    #nav a {
+        /* ugyanaz, mint flex-grow:1; flex-shrink:1;flex-basis:auto;*/
+        flex: 1 1 auto;
+        text-decoration: none;
+        color: black;
+    }
+
+/* 800px-nél nagyobb képernyő*/
+@media screen and (min-width: 800px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        max-width: 1500px;
+        margin: auto;
+    }
+
+    #main {
+        display: flex;
+    }
+
+    .dolt {
+        padding: 15px;
+        border-radius: 30px;
+        background-color: blue;
+        /*width: 400px;*/
+        color: white;
+    }
+
+        .dolt:hover {
+            background-color: red;
+        }
+    /*masszin {
+    background-color: lightblue;
+    width: 150px;
+    rder-radius: 50px;
+}
+*/
+
+    #nav,
+    #header {
+        order: -1;
+    }
+
+    #article {
+        flex: 1 1 75%;
+    }
+
+    #aside {
+        flex: 1 1 25%;
+    }
+
+    #footer {
+        order: 1;
+    }
+
+    img {
+        display: block;
+        margin: auto;
+    }
+}
