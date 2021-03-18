@@ -1,0 +1,8 @@
+﻿.egymas_mellet{
+    display:flex;
+    flex-direction:row;
+}
+.doboz {
+    height: 30px;
+    width: 30px;
+}
