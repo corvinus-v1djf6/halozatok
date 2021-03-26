@@ -1,17 +1,8 @@
-﻿/*
-function myFunction() {
-    document.getElementById("kerdes_szoveg").innerHTML = "Hello World";
-}
-
-
-function katt() {
-    document.getElementById("kerdes_szoveg").innerHTML = "Viisza World";
-}
-*/
+﻿
 var kerdesek;
-var k = 0;
+var kérdésszam = 2;
 var helyes;
-window.onload = function () {letoltes()}
+
 
 var letoltes = function () {
     fetch('/questions.json')
@@ -20,11 +11,11 @@ var letoltes = function () {
     );
 }
 
-var letöltésBefejeződött = function (d) {
+function letöltésBefejeződött(d) {
     console.log("Sikeres letöltés")
     console.log(d)
     kerdesek = d;
-    kérdésMegjelenítés(k);
+    kérdésMegjelenítés(0);
 }
 
     /*let kerdes = document.getElementById("kerdes_szoveg");
@@ -37,8 +28,22 @@ var letöltésBefejeződött = function (d) {
     }*/
 
 
-var kérdésMegjelenítés = function (k) {
-    document.getElementById("kerdes_szoveg").innerHTML = kerdesek[kerdes].questionText;
+var kérdésMegjelenítés = function (kérdésSorSzam) {
+    //document.getElementById("kerdes_szoveg").innerHTML = kerdesek[kérdésSorSzam].questionText;
+    //document.getElementById("kep1").src = "https://szoft1.comeback.hu/hajo/" + kerdesek[kérdésszam].image;
+
+    let kérdés_szöveg = document.getElementById("kerdes_szoveg");
+    //let kép = document.getElementById("kep1");
+    let valasz1 = document.getElementById("valasz1");
+    let valasz2 = document.getElementById("valasz2");
+    let valasz3 = document.getElementById("valasz3");
+
+    kérdés_szöveg.innerHTML = kerdesek[kérdésSorSzam].questionText
+    //kép.src = "https://szoft1.comeback.hu/hajo/" + kerdesek[kérdésSorSzam].image
+    valasz1.innerText = kerdesek[kérdésSorSzam].answer1
+    valasz2.innerText = kerdesek[kérdésSorSzam].answer2
+    valasz3.innerText = kerdesek[kérdésSorSzam].answer3
+    
 }
     
     //kerdes.innerHTML += "kérdés";
@@ -56,4 +61,64 @@ var kérdésMegjelenítés = function (k) {
    // console.log("eddig lefut2");
     //console.log(kérdés);
     //kérdésMegjelenítés(kérdés);
+
+window.onload = function () {
+    letoltes();
+    /*
+    //előre
+    document.getElementById("Elore").onclick = () => {
+        if (kérdésszam == kerdesek.length - 1) {
+            kérdésszam = 0;
+            letoltes();
+        }
+        else {
+            kérdésszam++;
+            letoltes();
+        }
+    }
+    //document.getElementById("kerdes_szoveg").innerHTML = "Hello World"
+   
+    //vissza
+    document.getElementById("Vissza").onclick = () => {
+        if (kérdésszam == 0) {
+            kérdésszam = kerdesek.length - 1;
+            letöltes();
+        }
+        else {
+            kérdésszam--;
+            letoltes();
+        }
+    }
+    //document.getElementById("kerdes_szoveg").innerHTML = "Viisza World";
+    */
+
+    function nextQuestion() {
+        if (kérdésszam == kerdesek.length - 1) {
+            kérdésszam = 0;
+            kérdésMegjelenítés(kérdésszam);
+        }
+        else {
+            kérdésMegjelenítés(kérdésszam++);
+        }
+    }
+
+    function prevQuestion() {
+        if (kérdésszam != 0) {
+            kérdésMegjelenítés(kérdésszam--);
+        }
+        else {
+            kérdésszam = kerdesek.length - 1;
+            kérdésMegjelenítés(kérdésszam);
+        }
+    }
+
+    kérdésMegjelenítés(kérdésszam);
+    letöltésBefejeződött(d);
+    
+}
+
+
+
+
+
 
