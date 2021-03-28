@@ -61,7 +61,7 @@ function Elore01() {
     }
 }
 
-//document.getElementById("válasz1").onclick = () => {
+
 function valasz01() {
 
 
@@ -73,14 +73,12 @@ function valasz01() {
         document.getElementById("valaszok" + kérdések01[kérdésSorszám].correctAnswer).style.background = "darkgreen";
     }
 
+    document.getElementById("valaszok").style.pointerEvents = 'none';
     document.getElementById("valasz1").style.pointerEvents = 'none';
     document.getElementById("valasz2").style.pointerEvents = 'none';
     document.getElementById("valasz3").style.pointerEvents = 'none';
 
 }
-
-
-//document.getElementById("válasz2").onclick = () => {
 
 function valasz02() {
     if (kérdések01[kérdésSorszám].correctAnswer == 2) {
@@ -91,13 +89,11 @@ function valasz02() {
         document.getElementById("valaszok" + kérdések01[kérdésSorszám].correctAnswer).style.background = "darkgreen";
     }
 
+    document.getElementById("valaszok").style.pointerEvents = 'none';
     document.getElementById("valasz1").style.pointerEvents = 'none';
     document.getElementById("valasz2").style.pointerEvents = 'none';
     document.getElementById("valasz3").style.pointerEvents = 'none';
 }
-
-
-//document.getElementById("válasz3").onclick = () => {
 
 function valasz03() {
     if (kérdések01[kérdésSorszám].correctAnswer == 3) {
@@ -108,6 +104,7 @@ function valasz03() {
         document.getElementById("valaszok" + kérdések01[kérdésSorszám].correctAnswer).style.background = "darkgreen";
     }
 
+    document.getElementById("valaszok").style.pointerEvents = 'none';
     document.getElementById("valasz1").style.pointerEvents = 'none';
     document.getElementById("valasz2").style.pointerEvents = 'none';
     document.getElementById("valasz3").style.pointerEvents = 'none';
