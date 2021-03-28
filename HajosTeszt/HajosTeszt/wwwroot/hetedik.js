@@ -1,6 +1,6 @@
 ﻿
 var kerdesek;
-var kérdésszam = 2;
+var kérdésszam = 0;
 var helyes;
 
 
