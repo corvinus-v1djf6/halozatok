@@ -61,6 +61,58 @@ function Elore01() {
     }
 }
 
+//document.getElementById("válasz1").onclick = () => {
+function valasz01() {
+
+
+    if (kérdések01[kérdésSorszám].correctAnswer == 1) {
+        document.getElementById("valasz1").style.background = "darkgreen";
+    }
+    else {
+        document.getElementById("valasz1").style.background = "lightcoral";
+        document.getElementById("valaszok" + kérdések01[kérdésSorszám].correctAnswer).style.background = "darkgreen";
+    }
+
+    document.getElementById("valasz1").style.pointerEvents = 'none';
+    document.getElementById("valasz2").style.pointerEvents = 'none';
+    document.getElementById("valasz3").style.pointerEvents = 'none';
+
+}
+
+
+//document.getElementById("válasz2").onclick = () => {
+
+function valasz02() {
+    if (kérdések01[kérdésSorszám].correctAnswer == 2) {
+        document.getElementById("valasz2").style.background = "darkgreen";
+    }
+    else {
+        document.getElementById("valasz2").style.background = "lightcoral";
+        document.getElementById("valaszok" + kérdések01[kérdésSorszám].correctAnswer).style.background = "darkgreen";
+    }
+
+    document.getElementById("valasz1").style.pointerEvents = 'none';
+    document.getElementById("valasz2").style.pointerEvents = 'none';
+    document.getElementById("valasz3").style.pointerEvents = 'none';
+}
+
+
+//document.getElementById("válasz3").onclick = () => {
+
+function valasz03() {
+    if (kérdések01[kérdésSorszám].correctAnswer == 3) {
+        document.getElementById("valasz3").style.background = "darkgreen";
+    }
+    else {
+        document.getElementById("valasz3").style.background = "lightcoral";
+        document.getElementById("valaszok" + kérdések01[kérdésSorszám].correctAnswer).style.background = "darkgreen";
+    }
+
+    document.getElementById("valasz1").style.pointerEvents = 'none';
+    document.getElementById("valasz2").style.pointerEvents = 'none';
+    document.getElementById("valasz3").style.pointerEvents = 'none';
+}
+
 window.onload = () => {
     letöltés01();
 
