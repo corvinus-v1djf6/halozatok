@@ -21,7 +21,13 @@ var kérdésMegjelenítés01 = function (kérdésSzáma) {
     let válasz03 = document.getElementById("valasz3");
 
     kérdés_szöveg01.innerHTML = kérdések01[kérdésSzáma].questionText
-    kép01.src = "https://szoft1.comeback.hu/hajo/" + kérdések01[kérdésSzáma].image
+    if (kérdések01[kérdésSzáma].image != "") {
+        kép01.src = "https://szoft1.comeback.hu/hajo/" + kérdések01[kérdésSzáma].image;
+    }
+    else {
+        kép01.src = " ";
+    }
+    
     válasz01.innerText = kérdések01[kérdésSzáma].answer1
     válasz02.innerText = kérdések01[kérdésSzáma].answer2
     válasz03.innerText = kérdések01[kérdésSzáma].answer3
@@ -36,7 +42,7 @@ function Vissza01() {
     else {
         //kérdésSorszám--;
         //letöltés01();
-        kérdésMegjelenítés01(kérdésSorszám--);
+        kérdésMegjelenítés01(--kérdésSorszám);
     }
 }
 
@@ -50,13 +56,14 @@ function Elore01() {
     else {
         //kérdésSorszám++;
         //letöltés01();
-        kérdésMegjelenítés01(kérdésSorszám++);
+        kérdésMegjelenítés01(++kérdésSorszám);
         //document.getElementById("kerdes_szoveg").innerHTML = kérdések01[kérdésSorszám].questionTex;
     }
 }
 
 window.onload = () => {
     letöltés01();
+
     //letöltésBefejeződött01(d);
     //kérdésMegjelenítés01(kérdésSorszám);
 }
