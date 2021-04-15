@@ -34,6 +34,7 @@ var kérdésMegjelenítés01 = function (kérdésSzáma) {
 }
 
 function Vissza01() {
+    location.reload();
     if (kérdésSorszám == 0) {
         kérdésSorszám = kérdések01.length-1;
         //letöltés01();
@@ -47,7 +48,8 @@ function Vissza01() {
 }
 
 function Elore01() {
-    if (kérdésSorszám == kérdések01.length-1) {
+    location.reload();
+    if (kérdésSorszám == kérdések01.length - 1) {
         kérdésSorszám = 0;
         //letöltés01();
         kérdésMegjelenítés01(kérdésSorszám);
@@ -112,7 +114,7 @@ function valasz03() {
 
 window.onload = () => {
     letöltés01();
-
+ 
     //letöltésBefejeződött01(d);
     //kérdésMegjelenítés01(kérdésSorszám);
 }
