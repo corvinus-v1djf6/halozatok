@@ -1,120 +1,128 @@
-﻿var kérdések01;
+﻿var kérdések;
 var kérdésSorszám = 0;
 
-function letöltés01() {
-    fetch('/questions.json')
-        .then(Response => Response.json())
-        .then(data => letöltésBefejeződött01(data));
+function letöltés() {
+    /*fetch('questions.json')
+        .then(response => response.json())
+        .then(data => letöltésBefejeződött(data));*/
+
+    fetch('/questions/1')
+        .then(response => response.json())
+        .then(data => kérdésMegjelenítés(data));
 }
 
-function letöltésBefejeződött01(d) {
+function kérdésBetöltés(id) {
+    fetch(`/questions/${id}`)
+        .then(response => {
+            if (!response.ok) {
+                console.error(`Hibás válasz: ${response.status}`)
+            }
+            else {
+                return response.json()
+            }
+        })
+        .then(data => kérdésMegjelenítés(data));
+}   
+
+function letöltésBefejeződött(d) {
     console.log("Sikeres letöltés")
     console.log(d)
-    kérdések01 = d
-    kérdésMegjelenítés01(0);
-}
-var kérdésMegjelenítés01 = function (kérdésSzáma) {
-    let kérdés_szöveg01 = document.getElementById("kerdes_szoveg");
-    let kép01 = document.getElementById("kep1");
-    let válasz01 = document.getElementById("valasz1");
-    let válasz02 = document.getElementById("valasz2");
-    let válasz03 = document.getElementById("valasz3");
-
-    kérdés_szöveg01.innerHTML = kérdések01[kérdésSzáma].questionText
-    if (kérdések01[kérdésSzáma].image != "") {
-        kép01.src = "https://szoft1.comeback.hu/hajo/" + kérdések01[kérdésSzáma].image;
-    }
-    else {
-        kép01.src = " ";
-    }
-    
-    válasz01.innerText = kérdések01[kérdésSzáma].answer1
-    válasz02.innerText = kérdések01[kérdésSzáma].answer2
-    válasz03.innerText = kérdések01[kérdésSzáma].answer3
+    kérdések = d
+    kérdésMegjelenítés(0);
 }
 
-function Vissza01() {
-    location.reload();
-    if (kérdésSorszám == 0) {
-        kérdésSorszám = kérdések01.length-1;
-        //letöltés01();
-        kérdésMegjelenítés01(kérdésSorszám);
-    }
-    else {
-        //kérdésSorszám--;
-        //letöltés01();
-        kérdésMegjelenítés01(--kérdésSorszám);
-    }
+   function kérdésMegjelenítés(kérdés) {
+    console.log(kérdés);
+    document.getElementById("kerdes_szoveg").innerText = kérdés.questionText
+    document.getElementById("valasz1").innerText = kérdés.answer1
+    document.getElementById("valasz2").innerText = kérdés.answer2
+    document.getElementById("valasz3").innerText = kérdés.answer3
+   // document.getElementById("kep1").src = "https://szoft1.comeback.hu/hajo/" + kérdés.image;
+
+       if (kérdés.image != "") {
+           document.getElementById("kep1").src = "https://szoft1.comeback.hu/hajo/" + kérdés.image;
+       }
+       else {
+           document.getElementById("kep1").src = "";
+           //"kep1".src = " ";
+           //console.log("ures");
+       }
 }
 
-function Elore01() {
-    location.reload();
-    if (kérdésSorszám == kérdések01.length - 1) {
-        kérdésSorszám = 0;
-        //letöltés01();
-        kérdésMegjelenítés01(kérdésSorszám);
-        //document.getElementById("kerdes_szoveg").innerHTML = kérdések01[kérdésSorszám].questionTex;
-    }
-    else {
-        //kérdésSorszám++;
-        //letöltés01();
-        kérdésMegjelenítés01(++kérdésSorszám);
-        //document.getElementById("kerdes_szoveg").innerHTML = kérdések01[kérdésSorszám].questionTex;
-    }
-}
-
-
-function valasz01() {
-
-
-    if (kérdések01[kérdésSorszám].correctAnswer == 1) {
-        document.getElementById("valasz1").style.background = "darkgreen";
-    }
-    else {
-        document.getElementById("valasz1").style.background = "lightcoral";
-        document.getElementById("valaszok" + kérdések01[kérdésSorszám].correctAnswer).style.background = "darkgreen";
-    }
-
-    document.getElementById("valaszok").style.pointerEvents = 'none';
-    document.getElementById("valasz1").style.pointerEvents = 'none';
-    document.getElementById("valasz2").style.pointerEvents = 'none';
-    document.getElementById("valasz3").style.pointerEvents = 'none';
-
-}
-
-function valasz02() {
-    if (kérdések01[kérdésSorszám].correctAnswer == 2) {
-        document.getElementById("valasz2").style.background = "darkgreen";
-    }
-    else {
-        document.getElementById("valasz2").style.background = "lightcoral";
-        document.getElementById("valaszok" + kérdések01[kérdésSorszám].correctAnswer).style.background = "darkgreen";
-    }
-
-    document.getElementById("valaszok").style.pointerEvents = 'none';
-    document.getElementById("valasz1").style.pointerEvents = 'none';
-    document.getElementById("valasz2").style.pointerEvents = 'none';
-    document.getElementById("valasz3").style.pointerEvents = 'none';
-}
-
-function valasz03() {
-    if (kérdések01[kérdésSorszám].correctAnswer == 3) {
-        document.getElementById("valasz3").style.background = "darkgreen";
-    }
-    else {
-        document.getElementById("valasz3").style.background = "lightcoral";
-        document.getElementById("valaszok" + kérdések01[kérdésSorszám].correctAnswer).style.background = "darkgreen";
-    }
-
-    document.getElementById("valaszok").style.pointerEvents = 'none';
-    document.getElementById("valasz1").style.pointerEvents = 'none';
-    document.getElementById("valasz2").style.pointerEvents = 'none';
-    document.getElementById("valasz3").style.pointerEvents = 'none';
-}
 
 window.onload = () => {
-    letöltés01();
- 
-    //letöltésBefejeződött01(d);
-    //kérdésMegjelenítés01(kérdésSorszám);
+
+    letöltés();
+
+   document.getElementById("Vissza").onclick = () => {
+
+        if (kérdésSorszám == 0) {
+            kérdésSorszám = 859 - 1
+            kérdésBetöltés(kérdésSorszám);
+        }
+        else {
+            kérdésBetöltés(--kérdésSorszám);
+        }
+
+    }
+
+    document.getElementById("Elore").onclick = () => {
+
+        if (kérdésSorszám == 859 - 1) {
+            kérdésSorszám = 0;
+            kérdésBetöltés(kérdésSorszám);
+        }
+        else {
+            kérdésBetöltés(++kérdésSorszám);
+        }
+
+}
+
+
+    document.getElementById("valasz1").onclick = () => {
+
+        //document.getElementById("valasz1").innerText = kérdés.correctAnswer
+        if (kérdések[kérdésSorszám].correctAnswer == 1) {
+            document.getElementById("valasz1").style.background = "darkgreen";
+        }
+        else {
+            document.getElementById("valasz1").style.background = "red";
+            document.getElementById("valasz" + kérdések[kérdésSorszám].correctAnswer).style.background = "darkgreen";
+        }
+
+        document.getElementById("valasz1").style.pointerEvents = 'none';
+        document.getElementById("valasz2").style.pointerEvents = 'none';
+        document.getElementById("valasz3").style.pointerEvents = 'none';
+
+    }
+
+    document.getElementById("valasz2").onclick = () => {
+
+        if (kérdések[kérdésSorszám].correctAnswer == 2) {
+            document.getElementById("valasz2").style.background = "darkgreen";
+        }
+        else {
+            document.getElementById("valasz2").style.background = "red";
+            document.getElementById("valasz" + kérdések[kérdésSorszám].correctAnswer).style.background = "darkgreen";
+        }
+
+        document.getElementById("valasz1").style.pointerEvents = 'none';
+        document.getElementById("valasz2").style.pointerEvents = 'none';
+        document.getElementById("valasz3").style.pointerEvents = 'none';
+    }
+
+    document.getElementById("valasz3").onclick = () => {
+
+        if (kérdések[kérdésSorszám].correctAnswer == 3) {
+            document.getElementById("valasz3").style.background = "darkgreen";
+        }
+        else {
+            document.getElementById("valasz3").style.background = "lightcoral";
+            document.getElementById("valasz" + kérdések[kérdésSorszám].correctAnswer).style.background = "darkgreen";
+        }
+
+        document.getElementById("valasz1").style.pointerEvents = 'none';
+        document.getElementById("valasz2").style.pointerEvents = 'none';
+        document.getElementById("valasz3").style.pointerEvents = 'none';
+    }
 }

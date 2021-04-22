@@ -29,7 +29,7 @@ div {
     overflow: hidden;
     flex-grow: 0;
     flex-shrink: 0;
-}
+   }
 
 #valaszok {
     flex-grow: 1;
