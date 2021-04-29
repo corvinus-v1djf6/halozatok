@@ -82,7 +82,7 @@ window.onload = () => {
     document.getElementById("valasz1").onclick = () => {
 
         //document.getElementById("valasz1").innerText = kérdés.correctAnswer
-        if (kérdések[kérdésSorszám].correctAnswer == 1) {
+        if (kérdésBetöltés(kérdésSorszám).correctAnswer == 1) {
             document.getElementById("valasz1").style.background = "darkgreen";
         }
         else {

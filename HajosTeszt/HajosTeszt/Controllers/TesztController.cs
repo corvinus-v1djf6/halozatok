@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HajosTeszt.Models;
 
 namespace EmptyBoat.Controllers
 {
@@ -35,6 +36,16 @@ namespace EmptyBoat.Controllers
                 Content = szoveg.ToUpper()
             };
             //return BadRequest("Nem jó a bemenő adat");
+        }
+
+        //[HttpGet] NEM KELL
+        [Route("questions/count")]
+        public int M4() //Tetszőleges metódusnév
+        {
+            hajostesztContext context = new hajostesztContext();
+            int kérdésekSzáma = context.Questions.Count();
+
+            return kérdésekSzáma;
         }
     }
 }

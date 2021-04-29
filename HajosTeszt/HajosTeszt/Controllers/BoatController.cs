@@ -25,6 +25,16 @@ namespace EmptyBoat.Controllers
 
             return new JsonResult(kérdés);
         }
+
+        //[HttpGet] NEM KELL
+        [Route("questions/count")]
+        public int M4() //Tetszőleges metódusnév
+        {
+            hajostesztContext context = new hajostesztContext();
+            int kérdésekSzáma = context.Questions.Count();
+
+            return kérdésekSzáma;
+        }
     }
 
 }
