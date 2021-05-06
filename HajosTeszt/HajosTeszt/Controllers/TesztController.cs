@@ -15,7 +15,7 @@ namespace EmptyBoat.Controllers
     {
         [HttpGet]
         [Route("corvinus/szerverido")]
-        public IActionResult M1()
+        public IActionResult M3()
         {
             string pontosIdő = DateTime.Now.ToShortTimeString();
 
@@ -28,7 +28,7 @@ namespace EmptyBoat.Controllers
 
         //[HttpGet] NEM KELL
         [Route("corvinus/nagybetus/{szoveg}")]
-        public IActionResult M2(string szoveg)
+        public IActionResult M5(string szoveg)
         {
             return new ContentResult
             {

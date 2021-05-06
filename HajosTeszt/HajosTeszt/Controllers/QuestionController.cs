@@ -1,19 +1,28 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using HajosTeszt.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HajosTeszt.Models;
 
-/*
-namespace EmptyBoat.Controllers
+namespace HajosTeszt.Controllers
 {
     //[Route("api/[controller]")]
     [ApiController]
-    public class BoatController : ControllerBase
+    public class QuestionController : ControllerBase
     {
+
         [HttpGet]
+        [Route("questions/count")]
+        public int M1()
+        {
+            hajostesztContext context = new hajostesztContext();
+            int kérdésekSzáma = context.Questions.Count();
+            return kérdésekSzáma;
+        }
+
+        //[HttpGet]
         [Route("questions/{sorszám}")]
         public ActionResult M2(int sorszám)
         {
@@ -27,16 +36,5 @@ namespace EmptyBoat.Controllers
             return new JsonResult(kérdés);
         }
 
-        //[HttpGet] NEM KELL
-        [Route("questions/count")]
-        public int M1() //Tetszőleges metódusnév
-        {
-            hajostesztContext context = new hajostesztContext();
-            int kérdésekSzáma = context.Questions.Count();
-
-            return kérdésekSzáma;
-        }
     }
-
 }
-*/
