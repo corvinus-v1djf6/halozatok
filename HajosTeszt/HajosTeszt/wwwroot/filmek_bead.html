@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="filmek_bead.css" rel="stylesheet" />
+</head>
+<body>
+    <form>
+        <div id="filmekList"></div>
+        <div>
+            <input id="filmText" type="text" placeholder="Híres filmek" />
+        </div>
+        <button id="addButton">Új film felvétele</button>
+        <br />
+        <button id="delButton">Film törlése</button>
+        <br />
+        <div id="filmek_szöveg">
+        </div>
+    </form>
+    <script>
+        document.getElementById("addButton").addEventListener("click", () => {
+
+            //Ezt az objektumot fogjuk átküldeni
+            let data = {
+                filmText: document.getElementById("filmText").value
+            }
+
+            fetch("api/filmek",
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                }).then(x => {
+                    if (x.ok) {
+                        alert("Siker");
+
+                    }
+                    else {
+                        alert("Kudarc");
+                    }
+                });
+        });
+
+            function filmBetoltes() {
+                fetch('api/filmek')
+                    .then(result => {
+                        if (!result.ok) {
+                            console.log('Hibás letöltés: ${result.status}');
+                            return null;
+                        }
+                        else {
+                            return result.json();
+                        }
+                    })
+                    .then(data => {
+                        for (var i = 0; i < data.length; i++) {
+                            document.getElementById("filmek_szöveg").innerHTML += data[i].filmText += "<br/>"
+                        }
+                    })
+            }
+
+            window.onload = () => {
+                filmBetoltes();
+            }
+    </script>
+</body>
+</html>
