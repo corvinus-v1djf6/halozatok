@@ -44,6 +44,32 @@
                 });
         });
 
+        document.getElementById("delButton").addEventListener("click", () => {
+            let url = "api/filmek"
+            let id = document.getElementById("delButton").value;
+
+            fetch(url + "/" + id,
+                {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(x => {
+
+                    if (x.ok && id > 0) {
+                        alert("Sikeres törlés");
+                        location.reload();
+                    }
+
+                    else {
+                        alert("Sikertelen törlés");
+
+                    }
+                });
+
+        })
+
             function filmBetoltes() {
                 fetch('api/filmek')
                     .then(result => {
