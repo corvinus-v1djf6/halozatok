@@ -15,8 +15,10 @@
         <br />
         <button id="delButton">Film törlése</button>
         <br />
-        <div id="filmek_szöveg">
-        </div>
+        <a href="https://localhost:44380/api/filmek">Összes film listázáse</a>
+        <br />
+        <div id="filmek_szöveg"></div>
+
     </form>
     <script>
         document.getElementById("addButton").addEventListener("click", () => {
@@ -68,7 +70,7 @@
                     }
                 });
 
-        })
+        });
 
             function filmBetoltes() {
                 fetch('api/filmek')
